@@ -26,7 +26,7 @@ const HeroSection: React.FC = () => {
         {/* <Text fontSize="lg" mb={2}><BiMap size={20} />
           Explore our collection:
         </Text> */}
-         <Box width="500px">
+         <Box width={{base:'200px', md:'500px'}}>
       <InputGroup>
         <Input
           bg="white" // Background color

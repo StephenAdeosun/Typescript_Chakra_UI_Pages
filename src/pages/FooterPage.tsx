@@ -4,16 +4,7 @@ import { FaGooglePlay, FaApple } from 'react-icons/fa';
 const Footer: React.FC = () => {
   return (
     <Box as="div" bg='rgb(235,242,247)'>
-    <Image
-      src="https://assets.jiji.ng/static/img/footer-nigeria-new.svg"
-      alt="Your Image"
-      style={{
-        width: '100%',
-        maxWidth: '80%',
-        margin: 'auto',
-        
-      }}
-    />
+    
   
     <Box as='footer' bgColor='rgb(0,181,63)' fontSize='80%' color="white" px={24} py={8}>
   <Image
