@@ -9,6 +9,7 @@ const HeroSection: React.FC = () => {
       bg="rgb(0,164,52)"
       color="white"
       py={32}
+      width="100%"
       textAlign="center"
     >
       

@@ -41,7 +41,7 @@ const MainSection: React.FC = () => {
   ];
 
   return (
-    <Box p={10} bgColor='rgb(235,242,247)' borderRadius='md'>
+    <Box p={{base:'4', md:'16'}} bgColor='rgb(235,242,247)' borderRadius='md'>
       <Stack direction={{ base: 'column', md: 'row' }} spacing={6}>
         <Box flex={4}>
           {categories.map((category, index) => (
