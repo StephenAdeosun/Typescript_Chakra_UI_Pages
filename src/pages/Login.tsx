@@ -29,7 +29,7 @@ const Login: React.FC = () => {
             </ChakraLink>
           </Text>
           <Text color='white'>
-            Don't have an account? <ChakraLink as={Link} to="/" textDecoration="underline" color='white' _hover={{ color: 'orange' }}>Sign Up</ChakraLink>
+            Don't have an account? <ChakraLink as={Link} to="/signup" textDecoration="underline" color='white' _hover={{ color: 'orange' }}>Sign Up</ChakraLink>
           </Text>
         </VStack>
       </Box>
