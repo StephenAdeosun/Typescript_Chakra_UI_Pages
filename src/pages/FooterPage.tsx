@@ -69,12 +69,12 @@ const Footer: React.FC = () => {
               rel="noopener noreferrer"
               leftIcon={<FaGooglePlay style={{ fontSize: '1.5rem' }} />}
               px={8}
-              fontSize="sm"
+              fontSize="10px"
               // colorScheme="white"
               bg="black"
               color="white"
             >
-              <Text>Download on</Text> Google Play
+              Download on <br />Google Play
             </Button>
             <Button
               as="a"
@@ -82,12 +82,13 @@ const Footer: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               px={8}
-              fontSize="sm"
+              fontSize="10px"
               color="white"
               bg="black"
               leftIcon={<FaApple  style={{ fontSize: '1.5rem', color:'white' }}/>}
             >
-              Download on the App Store
+              Download on the <br/> 
+               App Store
             </Button>
           </Stack>
         </Box>
