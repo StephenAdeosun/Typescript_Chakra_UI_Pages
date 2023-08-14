@@ -44,7 +44,7 @@ const HeroSection: React.FC = () => {
                 aria-label="Search"
                 icon={<FaSearch style={{ fontSize: '1.5rem' }}/>}
                 bg="none"
-                color="green"
+                color="orange"
                 // width="8.5rem"
                 // height="2.5rem"
                 // borderRadius="full"

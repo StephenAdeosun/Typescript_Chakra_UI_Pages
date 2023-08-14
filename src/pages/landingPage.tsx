@@ -7,7 +7,7 @@ import { Flex, Spacer,
 
 const Navbar: React.FC = () => {
   return (
-    <Flex p={{base:'2'}} px='20' bg='rgb(252, 127, 3)' justifyContent={{base:'space-evenly', sm:'center' }} alignItems="center"  position="fixed"
+    <Flex p={{base:'2'}} px={{base:'5', sm:'10'}} bg='rgb(252, 127, 3)' justifyContent={{base:'space-evenly', sm:'center' }} alignItems="center"  position="fixed"
     top="0"
     left="0"
     right="0"
@@ -20,8 +20,8 @@ const Navbar: React.FC = () => {
       
      
     
-    <ChakraLink as={Link} to="/login"  color='white' mr={2} fontSize={{base:'sm' , md:'lg'}}>Login</ChakraLink>
-    <ChakraLink as={Link} to="/signup"  color='white' mr={2} fontSize={{base:'sm' , md:'lg'}} >Registeration</ChakraLink>
+    <ChakraLink as={Link} to="/login" alignItems="center"   color='white' mr={{base:'1', sm:'2'}} fontSize={{base:'sm' , md:'lg'}}>Login</ChakraLink>
+    <ChakraLink as={Link} to="/signup" alignItems="center"  color='white' mr={2} fontSize={{base:'sm' , md:'lg'}} >Registeration</ChakraLink>
       <Button colorScheme="red" px='4'   as={ChakraLink} href="#">
         Sell
       </Button>
