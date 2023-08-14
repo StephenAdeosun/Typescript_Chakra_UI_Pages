@@ -7,7 +7,7 @@ import { Flex, Spacer,
 
 const Navbar: React.FC = () => {
   return (
-    <Flex p={{base:'2'}} px='20' bg='rgb(0,181,63)' justifyContent={{base:'space-evenly', sm:'center' }} alignItems="center"  position="fixed"
+    <Flex p={{base:'2'}} px='20' bg='rgb(252, 127, 3)' justifyContent={{base:'space-evenly', sm:'center' }} alignItems="center"  position="fixed"
     top="0"
     left="0"
     right="0"

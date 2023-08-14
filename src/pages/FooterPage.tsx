@@ -4,7 +4,7 @@ import { FaGooglePlay, FaApple } from 'react-icons/fa';
 const Footer: React.FC = () => {
   return (
     <Box as="div" bg='rgb(235,242,247)'>
-    <Image
+    {/* <Image
       src="https://assets.jiji.ng/static/img/footer-nigeria-new.svg"
       alt="Your Image"
       style={{
@@ -13,9 +13,9 @@ const Footer: React.FC = () => {
         margin: 'auto',
         
       }}
-    />
+    /> */}
   
-    <Box as='footer' bgColor='rgb(0,181,63)' fontSize='80%' color="white" px={{base:'10', md:'24'}} py={8}>
+    <Box as='footer' bgColor='rgb(252, 128, 3)' fontSize='80%' color="white" px={{base:'10', md:'24'}} py={8}>
  
 
       <Grid templateColumns={['1fr', '1fr', 'repeat(3, 1fr)', 'repeat(5, 1fr)']} gap={4}>

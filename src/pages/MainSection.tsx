@@ -14,7 +14,7 @@ const ProductCard: React.FC<{ name: string, image: string,price:string , tags?: 
     <Box height="150px" position="relative">
       <Image borderTopRadius="md" src={image} alt={name} objectFit="cover" w="100%" h="100%" />
       {tags && tags.length > 0 && (
-        <Box position="absolute" top="0" left="0"  bg="rgb(0,164,52)"
+        <Box position="absolute" top="0" left="0"  bg="rgb(252, 128, 3)"
         color="white" >
           {tags.map((tag, index) => (
             <Badge key={index} variant="ghost" size="sm" mr={1} >
@@ -36,7 +36,7 @@ const ProductCard: React.FC<{ name: string, image: string,price:string , tags?: 
       )}
       {/* w='30px' h='30px' */}
        <Box position="absolute"  bottom="-3" right="2" >
-        <StarIcon bgColor='rgb(235,242,247)' boxShadow='2xl' h='30' w='30' borderRadius='50%' p={2} color="green.400" />
+        <StarIcon bgColor='rgb(235,242,247)' boxShadow='2xl' h='30' w='30' borderRadius='50%' p={2} color="rgb(252, 128, 3)" />
       </Box>
     </Box>
     
@@ -45,7 +45,7 @@ const ProductCard: React.FC<{ name: string, image: string,price:string , tags?: 
     <Text fontSize="sm" p={1} color="black" mt={2}>
       {name}
     </Text>
-    <Text fontSize="sm" p={1} color="rgb(0,181,63)" mt={2}>
+    <Text fontSize="sm" p={1} color="rgb(252, 128, 3)" mt={2}>
     &#8358;{price}
     </Text>
   </Box>

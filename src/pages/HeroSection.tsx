@@ -6,7 +6,7 @@ import { BiMap } from 'react-icons/bi';
 const HeroSection: React.FC = () => {
   return (
     <Box
-      bg="rgb(0,164,52)"
+      bg="rgb(252, 128, 3)"
       color="white"
       py={32}
       width="100%"
