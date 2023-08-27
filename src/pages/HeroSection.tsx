@@ -24,9 +24,6 @@ const HeroSection: React.FC = () => {
     </Box>
       </Text>
       <Flex direction="column" alignItems="center" mb={6}>
-        {/* <Text fontSize="lg" mb={2}><BiMap size={20} />
-          Explore our collection:
-        </Text> */}
          <Box width={{base:'200px', md:'500px'}}>
       <InputGroup>
         <Input
@@ -38,11 +35,11 @@ const HeroSection: React.FC = () => {
           py='6'
           pr="3.5rem" // Space for the right icon
         />
-        <InputRightElement width="3.5rem" pointerEvents="none">
-          <Box w="1.5rem" h="1.5rem">
+        <InputRightElement width="3.5rem" >
+          <Box w="1.5rem" h="1.5rem" >
               <IconButton
                 aria-label="Search"
-                icon={<FaSearch style={{ fontSize: '1.5rem' }}/>}
+                icon={<FaSearch style={{ fontSize: '1.5rem', cursor:'pointer'}}/>}
                 bg="none"
                 color="orange"
                 // width="8.5rem"

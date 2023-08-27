@@ -4,7 +4,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import ResetPassword from './pages/ResetPassword';
 import Navbar from './pages/landingPage';
-import HeroSection from './pages/HeroSection';
+// import HeroSection from './pages/HeroSection';
 import Footer from './pages/FooterPage';
 import MainSection from './pages/MainSection';
 const App: React.FC = () => {
@@ -15,7 +15,7 @@ const App: React.FC = () => {
       
         <Route exact path="/">
         <Navbar /> 
-        <HeroSection/>
+        {/* <HeroSection/> */}
         <MainSection/>
 <Footer/>
         </Route>

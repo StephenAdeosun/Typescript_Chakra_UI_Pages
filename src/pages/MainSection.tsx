@@ -1,11 +1,15 @@
 import React from 'react';
 import { Box, Stack, Text, SimpleGrid, Image, Button,Badge ,Divider} from '@chakra-ui/react';
+import { Heading, Input, Flex,  InputGroup, InputRightElement, IconButton } from '@chakra-ui/react';
+import { FaSearch } from 'react-icons/fa';
+import { BiMap } from 'react-icons/bi';
+import { useState } from 'react';
 import { StarIcon } from '@chakra-ui/icons';
 
 const CategoryCard: React.FC<{ name: string  }> = ({ name }) => (
   <Box bg="white" color='grey' p={3}  boxShadow="md">
     <Text fontWeight="sm">{name}</Text>
-     <Text mt={2} color="gray.800">105,394 ads</Text> {/* Add this line */}
+     <Text mt={2} color="gray.800">105,394 ads</Text> 
   
   </Box>
 );
@@ -34,7 +38,6 @@ const ProductCard: React.FC<{ name: string, image: string,price:string , tags?: 
           ))}
         </Box>
       )}
-      {/* w='30px' h='30px' */}
        <Box position="absolute"  bottom="-3" right="2" >
         <StarIcon bgColor='rgb(235,242,247)' boxShadow='2xl' h='30' w='30' borderRadius='50%' p={2} color="rgb(252, 128, 3)" />
       </Box>
@@ -53,6 +56,8 @@ const ProductCard: React.FC<{ name: string, image: string,price:string , tags?: 
 
 
 const MainSection: React.FC = () => {
+
+
   const categories = ['Vehicles', 'Property', 'Mobile Phones and Tablets', 'Electronics', 'Jobs', 'Services'];
   const products = [
   
@@ -74,10 +79,72 @@ const MainSection: React.FC = () => {
     { name: 'Dodge Charger SXT 2008 ' ,image: 'https://pictures-nigeria.jijistatic.com/127277453_MTA0MC03ODAtZTlmZjIwYzU0NA.webp' , price:'3,500,000' , number:['2']}	,
        { name: 'Honda Civic  Gray' ,image: 'https://pictures-nigeria.jijistatic.com/129147482_MTI4MC0xMTQzLWIyNmUwZWM2NDk.webp' , price:'8,800,000' , number:['1']}	,
    
+
+
   ];
 
+  const [searchInput, setSearchInput] = useState('');
+  const filteredProducts = products.filter(product =>
+    product.name.toLowerCase().includes(searchInput.toLowerCase())
+  );
+
+  // Function to handle search input changes
+  const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchInput(event.target.value);
+  };
+  // console.log("Filtered Products Length:", filteredProducts.length);
+
   return (
+    <Box>
+ <Box
+      bg="rgb(252, 128, 3)"
+      color="white"
+      py={32}
+      width="100%"
+      textAlign="center"
+    >
+      
+      <Text fontSize="xl" color="white" mb={6}>
+       Find Anything in  <Box
+      bg="black" // Background color
+      p={2} // Padding
+      rounded="sm" // Rounded corners
+      display="inline-block" // Display inline with text
+    >
+      <Text color="white" fontSize='sm'> All in Nigeria </Text>
+    </Box>
+      </Text>
+      <Flex direction="column" alignItems="center" mb={6}>
+      <Box width={{ base: '200px', md: '500px' }}>
+        <InputGroup>
+          <Input
+            bg="white"
+            color="black"
+            placeholder="I am looking for..."
+            _placeholder={{ color: 'gray.500', fontSize: 'sm' }}
+            borderRadius="md"
+            py="6"
+            pr="3.5rem"
+            value={searchInput} // Bind the search input value
+            onChange={handleSearchInputChange} // Handle input changes
+          />
+          <InputRightElement width="3.5rem">
+            <Box w="1.5rem" h="1.5rem">
+              <IconButton
+                aria-label="Search"
+                icon={<FaSearch style={{ fontSize: '1.5rem', cursor: 'pointer' }} />}
+                bg="none"
+                color="orange"
+              />
+            </Box>
+          </InputRightElement>
+        </InputGroup>
+      </Box>
+      </Flex>
+      
+    </Box>
     <Box p={{base:'4', md:'16'}} bgColor='rgb(235,242,247)' borderRadius='md'>
+
       <Stack direction={{ base: 'column', md: 'row' }} spacing={6}>
         <Box flex={3} cursor='pointer'>
           {categories.map((category, index) => (
@@ -85,16 +152,25 @@ const MainSection: React.FC = () => {
             
           ))}
         </Box>
-        <Box   flex={8}><Text fontSize="xl" p={1} color="black"  mt={-3}>Trending ads</Text>
-        <SimpleGrid columns={{ base: 2, md: 2, lg: 4 }} spacing={{ base:'4', md: '3' }} cursor='pointer'>
-          
-            {products.map((product, index) => (
-              <ProductCard key={index} name={product.name} image={product.image} price={product.price} tags={product.tags} number={product.number}  />
-            ))}
+        <Box flex={8}>
+          <Text fontSize="xl" p={1} color="black" mt={-3}>Trending ads</Text>
+          <SimpleGrid columns={{ base: 2, md: 2, lg: 4 }} spacing={{ base: '4', md: '3' }} cursor="pointer">
+            {filteredProducts.length === 0 ? (
+              <Text textAlign="center" fontSize="lg" color="gray.500" mt={8}>
+                No items found.
+              </Text>
+
+            ) : (
+              filteredProducts.map((product, index) => (
+                <ProductCard key={index} name={product.name} image={product.image} price={product.price} tags={product.tags} number={product.number} />
+              ))
+            )}
           </SimpleGrid>
         </Box>
       </Stack>
     </Box>
+    </Box>
+
   );
 };
 
