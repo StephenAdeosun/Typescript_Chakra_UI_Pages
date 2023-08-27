@@ -29,11 +29,11 @@ const CategoryCard: React.FC<{ name: string  }> = ({ name }) => (
 // );
 
 const MiniCardContainer: React.FC<{ data: { image: string, description: string }[] }> = ({ data }) => (
-  <SimpleGrid columns={{ base: 3, sm: 3, md: 5 }} spacing={0.6} bgColor="rgb(235,242,247)"   >
+  <SimpleGrid columns={{ base: 3, sm: 5, md: 5 }} spacing={0.6} bgColor="rgb(235,242,247)"   >
     {data.map((item, index) => (
       <Box key={index} margin='7 0.4' >
-        <Box bg="white" py={6} border="red"  boxShadow="md" display={{ base: 'block' ,xl: 'none' }} >
-          <Image src={item.image} alt={`Image ${index}`} w="40%" margin='0 auto' h='100%' />
+        <Box bg="white" py={6} border="red"  boxShadow="md" display={{ base: 'block' ,xl: 'none' }} h="100%" >
+          <Image src={item.image} alt={`Image ${index}`} w="65%" margin='0 auto' h='auto' />
           <Text fontSize="sm" mt={0.2} textAlign='center' fontWeight='bold' color='black'>
             {item.description}
 
