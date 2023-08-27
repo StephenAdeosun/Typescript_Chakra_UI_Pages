@@ -5,7 +5,7 @@ import { FaSearch } from 'react-icons/fa';
 import { BiMap } from 'react-icons/bi';
 import { useState } from 'react';
 import { StarIcon } from '@chakra-ui/icons';
-
+import { Spinner } from '@chakra-ui/react'
 const CategoryCard: React.FC<{ name: string  }> = ({ name }) => (
   <Box bg="white" color='grey' p={3}  boxShadow="md">
     <Text fontWeight="sm">{name}</Text>
@@ -13,6 +13,38 @@ const CategoryCard: React.FC<{ name: string  }> = ({ name }) => (
   
   </Box>
 );
+
+
+// const MiniCardContainer: React.FC<{ data: { image: string, description: string }[] }> = ({ data }) => (
+//   <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={4}>
+//     {data.map((item, index) => (
+//       <Box key={index} bg="white" p={2} boxShadow="md" borderRadius="md">
+//         <Image src={item.image} alt={`Image ${index}`} w="100%" h="auto" />
+//         <Text fontSize="sm" mt={2}>
+//           {item.description}
+//         </Text>
+//       </Box>
+//     ))}
+//   </SimpleGrid>
+// );
+
+const MiniCardContainer: React.FC<{ data: { image: string, description: string }[] }> = ({ data }) => (
+  <SimpleGrid columns={{ base: 3, sm: 3, md: 5 }} spacing={0.6} bgColor="rgb(235,242,247)"   >
+    {data.map((item, index) => (
+      <Box key={index} margin='7 0.4' >
+        <Box bg="white" py={6} border="red"  boxShadow="md" display={{ base: 'block' ,xl: 'none' }} >
+          <Image src={item.image} alt={`Image ${index}`} w="40%" margin='0 auto' h='100%' />
+          <Text fontSize="sm" mt={0.2} textAlign='center' fontWeight='bold' color='black'>
+            {item.description}
+
+          </Text>
+        </Box>
+      </Box>
+    ))}
+  </SimpleGrid>
+);
+
+
 const ProductCard: React.FC<{ name: string, image: string,price:string , tags?: string[] , number?:string[]}> = ({ name, image, price , tags, number }) => (
   <Box bg="white" borderRadius="md" boxShadow="md">
     <Box height="150px" position="relative">
@@ -82,16 +114,47 @@ const MainSection: React.FC = () => {
 
 
   ];
+  const miniCardData = [
+    { image: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSyDPE062homve0viUqGY7HuRLZoI__ugIDpAlKQyfO8eExw8Sf', description: 'Post ads' },
+    { image: 'https://assets.jijistatic.com/art/attributes/categories/vehicles.png', description: 'Vehicles'},
+    { image: 'https://assets.jijistatic.com/art/attributes/categories/real-estate.png', description: 'Property' },
+    // { image: 'https://assets.jijistatic.com/art/attributes/categories/mobile.png', description: 'Mobile Phones' },
+    { image: 'https://assets.jijistatic.com/art/attributes/categories/electronics.png', description: 'Electronics' },
+    { image: 'https://assets.jijistatic.com/art/attributes/categories/home.png', description: 'Home, Furniture' },
+    { image: 'https://assets.jijistatic.com/art/attributes/categories/beauty.png', description: 'Health & Beauty' },
+    { image: 'https://assets.jijistatic.com/art/attributes/categories/beauty.png', description: 'Health & Beauty' },
+    // { image: 'https://assets.jijistatic.com/art/attributes/categories/fashion.png', description: 'Fashion' },
+    { image:'https://assets.jijistatic.com/art/attributes/categories/hobbies.png', description: 'Sports, Arts' },  
+    { image:'https://assets.jijistatic.com/art/attributes/categories/jobseekers.png', description: 'Seeking Work' },
+    { image: 'https://assets.jijistatic.com/art/attributes/categories/services.png', description: 'Services' },
+    { image: 'https://assets.jijistatic.com/art/attributes/categories/jobs.png', description: 'Jobs'},
+    { image: 'https://assets.jijistatic.com/art/attributes/categories/babies.png', description: 'Babies & Kids' },
+    { image: 'https://assets.jijistatic.com/art/attributes/categories/animals.png', description: 'Pets'},
+    { image: 'https://assets.jijistatic.com/art/attributes/categories/agriculture.png', description: 'Agriculture'},
+    { image: 'https://assets.jijistatic.com/art/attributes/categories/equipment.png', description: ' Equipments' },
+    { image: 'https://assets.jijistatic.com/art/attributes/categories/repair.png', description: 'Construction' }
+  ];
+
+
 
   const [searchInput, setSearchInput] = useState('');
+  const [searching, setSearching] = useState(false); // New state for tracking search
+
   const filteredProducts = products.filter(product =>
     product.name.toLowerCase().includes(searchInput.toLowerCase())
   );
 
-  // Function to handle search input changes
   const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(event.target.value);
   };
+
+  const handleSearch = () => {
+    setSearching(true); // Set searching to true when search starts
+    setTimeout(() => {
+      setSearching(false); // Set searching to false after a short delay (simulating API call)
+    }, 1000); // Adjust the delay as needed
+  };
+
   // console.log("Filtered Products Length:", filteredProducts.length);
 
   return (
@@ -143,29 +206,41 @@ const MainSection: React.FC = () => {
       </Flex>
       
     </Box>
+    {/* <MiniCardContainer data={miniCardData} /> */}
+    
     <Box p={{base:'4', md:'16'}} bgColor='rgb(235,242,247)' borderRadius='md'>
-
+    {/* <Box flex={8}>
+        <Text fontSize="xl" p={1} color="black" mt={-3}>
+          Trending ads
+        </Text>
+        <MiniCardContainer data={miniCardData} />
+      </Box> */}
+      <MiniCardContainer data={miniCardData} />
       <Stack direction={{ base: 'column', md: 'row' }} spacing={6}>
-        <Box flex={3} cursor='pointer'>
+        <Box flex={3} cursor='pointer' display={{ base: 'none', xl: 'block' }}>
           {categories.map((category, index) => (
             <CategoryCard key={index} name={category} />
             
           ))}
         </Box>
         <Box flex={8}>
-          <Text fontSize="xl" p={1} color="black" mt={-3}>Trending ads</Text>
-          <SimpleGrid columns={{ base: 2, md: 2, lg: 4 }} spacing={{ base: '4', md: '3' }} cursor="pointer">
-            {filteredProducts.length === 0 ? (
-              <Text textAlign="center" fontSize="lg" color="gray.500" mt={8}>
-                No items found.
-              </Text>
+          <Text fontSize="xl" p={1} color="black" mt={{base:'3', xl:'-3'}}>Trending ads</Text>
+          {searching ? (
+    <Spinner size="lg" mt={8} color='red' />
+  ) : (
+    <SimpleGrid columns={{ base: 2, md: 2, lg: 4 }} spacing={{ base: '4', md: '3' }} cursor="pointer">
+      {filteredProducts.length === 0 ? (
+        <Text textAlign="center" fontSize="lg" color="gray.500" mt={8}>
+          No items found.
+        </Text>
+      ) : (
+        filteredProducts.map((product, index) => (
+          <ProductCard key={index} name={product.name} image={product.image} price={product.price} tags={product.tags} number={product.number} />
+        ))
+      )}
+    </SimpleGrid>
+  )}
 
-            ) : (
-              filteredProducts.map((product, index) => (
-                <ProductCard key={index} name={product.name} image={product.image} price={product.price} tags={product.tags} number={product.number} />
-              ))
-            )}
-          </SimpleGrid>
         </Box>
       </Stack>
     </Box>
