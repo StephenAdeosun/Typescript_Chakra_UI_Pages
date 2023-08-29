@@ -34,8 +34,8 @@ const MiniCardContainer: React.FC<{ data: { image: string, description: string }
     {data.map((item, index) => (
       <Link key={0} to={`/${item.description.toLowerCase()}`}>
       <Box key={index} margin='7 0.4' >
-        <Box bg="white" py={6} border="red"  boxShadow="md" display={{ base: 'block', xl: 'none' }} h="120px" >
-          <Image src={item.image} alt={`Image ${index}`} w="65%" margin='0 auto' h='100%' />
+        <Box bg="white" py={6} border="red"  boxShadow="md" display={{ base: 'block', xl: 'none' }} h="180px" >
+          <Image src={item.image} alt={`Image ${index}`} w="100%" margin='0 auto' h='100%' />
           <Text fontSize="sm" mt={0.2} textAlign='center' fontWeight='bold' color='black'>
             {item.description}
 
@@ -138,9 +138,9 @@ const MainSection: React.FC = () => {
     { image: 'https://assets.jijistatic.com/art/attributes/categories/real-estate.png', description: 'Property' },
     // { image: 'https://assets.jijistatic.com/art/attributes/categories/mobile.png', description: 'Mobile Phones' },
     { image: 'https://assets.jijistatic.com/art/attributes/categories/electronics.png', description: 'Electronics' },
-    { image: 'https://assets.jijistatic.com/art/attributes/categories/home.png', description: 'Home, Furniture' },
-    { image: 'https://assets.jijistatic.com/art/attributes/categories/beauty.png', description: 'Health & Beauty' },
-    { image: 'https://assets.jijistatic.com/art/attributes/categories/beauty.png', description: 'Health & Beauty' },
+    { image: 'https://assets.jijistatic.com/art/attributes/categories/home.png', description: ' Furniture' },
+    { image: 'https://assets.jijistatic.com/art/attributes/categories/beauty.png', description: 'Health  Beauty' },
+    { image: 'https://assets.jijistatic.com/art/attributes/categories/beauty.png', description: 'Health  Beauty' },
     // { image: 'https://assets.jijistatic.com/art/attributes/categories/fashion.png', description: 'Fashion' },
     { image:'https://assets.jijistatic.com/art/attributes/categories/hobbies.png', description: 'Sports, Arts' },  
     { image:'https://assets.jijistatic.com/art/attributes/categories/jobseekers.png', description: 'Seeking Work' },
