@@ -34,7 +34,7 @@ const MiniCardContainer: React.FC<{ data: { image: string, description: string }
     {data.map((item, index) => (
       <Link key={0} to={`/${item.description.toLowerCase()}`}>
       <Box key={index} margin='7 0.4' >
-        <Box bg="white" py={6} border="red"  boxShadow="md" display={{ base: 'block', xl: 'none' }} h="180px" >
+        <Box bg="white" py={6} border="red"  boxShadow="md" display={{ base: 'block', xl: 'none' }} h="130px" >
           <Image src={item.image} alt={`Image ${index}`} w="100%" margin='0 auto' h='100%' />
           <Text fontSize="sm" mt={0.2} textAlign='center' fontWeight='bold' color='black'>
             {item.description}
