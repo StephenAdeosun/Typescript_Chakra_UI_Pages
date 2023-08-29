@@ -6,6 +6,7 @@ import { BiMap } from 'react-icons/bi';
 import { useState } from 'react';
 import { StarIcon } from '@chakra-ui/icons';
 import { Spinner } from '@chakra-ui/react'
+import { Link } from 'react-router-dom';
 const CategoryCard: React.FC<{ name: string  }> = ({ name }) => (
   <Box bg="white" color='grey' p={3}  boxShadow="md">
     <Text fontWeight="sm">{name}</Text>
@@ -31,6 +32,7 @@ const CategoryCard: React.FC<{ name: string  }> = ({ name }) => (
 const MiniCardContainer: React.FC<{ data: { image: string, description: string }[] }> = ({ data }) => (
   <SimpleGrid columns={{ base: 3, sm: 5, md: 5 }} spacing={0.6} bgColor="rgb(235,242,247)"   >
     {data.map((item, index) => (
+      <Link key={0} to={`/${item.description.toLowerCase()}`}>
       <Box key={index} margin='7 0.4' >
         <Box bg="white" py={6} border="red"  boxShadow="md" display={{ base: 'block' ,xl: 'none' }} h="100%" >
           <Image src={item.image} alt={`Image ${index}`} w="65%" margin='0 auto' h='auto' />
@@ -40,6 +42,7 @@ const MiniCardContainer: React.FC<{ data: { image: string, description: string }
           </Text>
         </Box>
       </Box>
+      </Link>
     ))}
   </SimpleGrid>
 );
@@ -115,7 +118,7 @@ const MainSection: React.FC = () => {
 
   ];
   const miniCardData = [
-    { image: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSyDPE062homve0viUqGY7HuRLZoI__ugIDpAlKQyfO8eExw8Sf', description: 'Post ads' },
+    { image: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSyDPE062homve0viUqGY7HuRLZoI__ugIDpAlKQyfO8eExw8Sf', description: 'Postads' },
     { image: 'https://assets.jijistatic.com/art/attributes/categories/vehicles.png', description: 'Vehicles'},
     { image: 'https://assets.jijistatic.com/art/attributes/categories/real-estate.png', description: 'Property' },
     // { image: 'https://assets.jijistatic.com/art/attributes/categories/mobile.png', description: 'Mobile Phones' },
