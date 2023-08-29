@@ -170,6 +170,7 @@ const AdSubmissionPage: React.FC = () => {
                   color="gray.600"
                   alignItems="end"
                   onClick={() => setShowDropdown(!showDropdown)}
+                  bg={"none"}
                 // bg={showDropdown ? 'gray.700' : 'black'}
                 // _hover={{ bg: 'gray.400' }}
                 />
@@ -350,7 +351,7 @@ const AdSubmissionPage: React.FC = () => {
 
             <Button type="submit" w={'100%'} 
                   _hover={{ bg: 'orange.500' }}
-            
+            color="white"
             bgColor="orange.400"
               // disabled={selectedCategory === ''}
             >
