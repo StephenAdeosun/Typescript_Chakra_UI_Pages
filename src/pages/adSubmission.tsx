@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useRef, useEffect } from 'react';
 import {
   Box,
   Heading,
@@ -9,13 +9,14 @@ import {
   List,
   ListItem,
   InputGroup,
-
+Divider,
   InputRightElement,
   IconButton,
   Image,
 } from '@chakra-ui/react';
-import { FaAngleDown } from 'react-icons/fa';
+import { FaAngleDown , FaAngleLeft} from 'react-icons/fa';
 import { FaPlusCircle, FaTrash } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 
 const categories = [
@@ -35,16 +36,45 @@ const categories = [
 ];
 
 const locations = [
-  'Location 1',
-  'Location 2',
-  'Location 3',
-  'Location 4',
-  'Location 5',
+  'Abuja',
+  'Lagos State',
+  'Rivers State',
+  'Kano State',
+  'Osun State',
+  'Osun State',
+  'Osun State',
+  'Abia State',
+  'Ondo State',
+  'Oyo State',
+  'Kwara State',
+  'Adamawa State',
+  'Akwa Ibom State',
+  'Anambra State',
+
+
   // Add more locations as needed
 ];
 
 
 const AdSubmissionPage: React.FC = () => {
+  // const containerRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef<HTMLInputElement | null>(null);
+
+
+  useEffect(() => {
+    const handleDocumentClick = (event: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setShowDropdown(false);
+        setShowLocationDropdown(false);
+      }
+    };
+
+    document.addEventListener('click', handleDocumentClick);
+
+    return () => {
+      document.removeEventListener('click', handleDocumentClick);
+    };
+  }, []);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [filteredCategories, setFilteredCategories] = useState<{ name: string; image: string }[]>([]);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -126,12 +156,25 @@ const AdSubmissionPage: React.FC = () => {
 
   return (
     <Box p={4} pt='24' bgColor='rgb(235,242,247)'>
-      <Box maxWidth="900px" bgColor='white' mb={'14'} borderRadius="lg" p='4' margin="auto" display='flex' justifyContent='space-between'>
-      <Heading size="lg" textAlign='center' fontWeight='md'  color='white'  fontSize='md' >
-        Post Ad
+      <Box maxWidth="900px" bgColor='white' mb={'64'} borderRadius="lg" p='4' margin="auto" display='flex' alignItems={'center'} justifyContent='space-between'>
+      {/* <Heading size="lg" textAlign='center' fontWeight='md'  color='white'  fontSize='md' > */}
+         <Link to="/">
+         <IconButton
+         aria-label="Toggle dropdown"
+         icon={<FaAngleLeft />}
+         color="gray.600"
+        //  alignItems="end"
+         onClick={() => setShowDropdown(!showDropdown)}
+         bg={"none"}
+         border="none"
+       // bg={showDropdown ? 'gray.700' : 'black'}
+       // _hover={{ bg: 'gray.400' }}
+       />
+        
+       </Link>
        
-      </Heading> 
-      <Heading size="lg" textAlign='center' fontWeight='md'    fontSize='md' color={'black'} >
+      {/* </Heading>  */}
+      <Heading size="lg" fontWeight='md'    fontSize='md' color={'black'} >
         Post Ad
        
       </Heading> 
@@ -145,8 +188,9 @@ const AdSubmissionPage: React.FC = () => {
           Clear Form
         </Button>
       </Box>
-      <Box maxWidth="900px" bgColor='white' p='6' borderRadius="md"  margin="auto">
-        <Box maxWidth="400px" margin="auto">
+      <Divider mb='26px' />
+      <Box maxWidth="900px" bgColor='white' p='6' borderRadius="md" mt={'8'}  margin="auto"  ref={containerRef} >
+        <Box maxWidth="400px" margin="auto" >
           <form onSubmit={handleSubmit}>
             <InputGroup>
               <Input
@@ -155,9 +199,10 @@ const AdSubmissionPage: React.FC = () => {
                 onChange={handleCategoryInputChange}
                 border="1px solid gray"
                 mb={4}
-                // py={8}
+                // py={8} 
+                ref={containerRef}
                 height="60px"
-
+               
 
                 color="black" // Change the text input color
                 _placeholder={{ color: 'gray.500' }}
@@ -171,6 +216,7 @@ const AdSubmissionPage: React.FC = () => {
                   alignItems="end"
                   onClick={() => setShowDropdown(!showDropdown)}
                   bg={"none"}
+                  border="none"
                 // bg={showDropdown ? 'gray.700' : 'black'}
                 // _hover={{ bg: 'gray.400' }}
                 />
@@ -180,13 +226,16 @@ const AdSubmissionPage: React.FC = () => {
               <List bg="white"
                 border="1px solid gray"
                 mt={2}
-                position="absolute"
+                position="relative"
                 zIndex="2"
-                width="31.7%"
-                maxHeight="350px" // Set a fixed max height for scrolling
+                maxWidth="400px"
+                // width="100%"
+                // width={{ base: '100%', md: '250px' }}
+                maxHeight="250px" // Set a fixed max height for scrolling
                 overflowY="auto"  // Enable vertical scrolling 
                 borderRadius="md"
 
+                
               >
 
                 {filteredCategories.map((category, index) => (
@@ -242,9 +291,9 @@ const AdSubmissionPage: React.FC = () => {
                 border="1px solid gray"
                 mt={2}
                 mb={8}
-                position="absolute"
+                // position="absolute"
                 zIndex="2"
-                width="31.7%"
+                // width="31.7%"
                 borderRadius="md"
                 maxHeight="150px"
                 overflowY="auto"

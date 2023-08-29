@@ -35,8 +35,8 @@ const MiniCardContainer: React.FC<{ data: { image: string, description: string }
       <Link key={0} to={`/${item.description.toLowerCase()}`}>
       <Box key={index} margin='7 0.4' >
         <Box bg="white" py={6} border="red"  boxShadow="md" display={{ base: 'block', xl: 'none' }} h="120px" >
-          <Image src={item.image} alt={`Image ${index}`} w="100%" margin='0 auto' h='100%' />
-          <Text fontSize="sm" mt={0.2} textAlign='center' fontWeight='bold' color='black'>
+          <Image src={item.image} alt={`Image ${index}`} w="75%" margin='0 auto' h='100%' />
+          <Text fontSize="10px" mt={0.2} textAlign='center' fontWeight='bold' color='black'>
             {item.description}
 
           </Text>
@@ -146,7 +146,7 @@ const MainSection: React.FC = () => {
     { image:'https://assets.jijistatic.com/art/attributes/categories/jobseekers.png', description: 'Seeking Work' },
     { image: 'https://assets.jijistatic.com/art/attributes/categories/services.png', description: 'Services' },
     { image: 'https://assets.jijistatic.com/art/attributes/categories/jobs.png', description: 'Jobs'},
-    { image: 'https://assets.jijistatic.com/art/attributes/categories/babies.png', description: 'Babies & Kids' },
+    { image: 'https://assets.jijistatic.com/art/attributes/categories/babies.png', description: 'Babies, Kids' },
     { image: 'https://assets.jijistatic.com/art/attributes/categories/animals.png', description: 'Pets'},
     { image: 'https://assets.jijistatic.com/art/attributes/categories/agriculture.png', description: 'Agriculture'},
     { image: 'https://assets.jijistatic.com/art/attributes/categories/equipment.png', description: ' Equipments' },
@@ -216,6 +216,7 @@ const MainSection: React.FC = () => {
                 icon={<FaSearch style={{ fontSize: '1.5rem', cursor: 'pointer' }} />}
                 bg="none"
                 color="orange"
+                border={"none"}
               />
             </Box>
           </InputRightElement>
