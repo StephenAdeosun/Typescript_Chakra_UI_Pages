@@ -155,7 +155,7 @@ const AdSubmissionPage: React.FC = () => {
   };
 
   return (
-    <Box p={4} pt='24' bgColor='rgb(235,242,247)'>
+    <Box p={4} pt={{base:'10', md:'24'}} bgColor='rgb(235,242,247)'>
       <Box maxWidth="900px" bgColor='white' mb={'64'} borderRadius="lg" p='4' margin="auto" display='flex' alignItems={'center'} justifyContent='space-between'>
       {/* <Heading size="lg" textAlign='center' fontWeight='md'  color='white'  fontSize='md' > */}
          <Link to="/">
