@@ -7,6 +7,7 @@ import Navbar from './pages/landingPage';
 // import HeroSection from './pages/HeroSection';
 import Footer from './pages/FooterPage';
 import MainSection from './pages/MainSection';
+import Products from './pages/product1';
 import  AdSubmissionPage from './pages/adSubmission';
 const App: React.FC = () => {
   return (
@@ -16,13 +17,15 @@ const App: React.FC = () => {
 
         <Route exact path="/">
           <Navbar />
-          {/* <HeroSection/> */}
-          {/* <AdSubmissionPage/> */}
           <MainSection />
           <Footer />
         </Route>
         <Route exact path="/Postads">
           <AdSubmissionPage />
+          </Route>
+        <Route exact path="/product-details">
+          <Navbar />
+        <Products  />
           </Route>
         <Route exact path="/login">
           <Login />

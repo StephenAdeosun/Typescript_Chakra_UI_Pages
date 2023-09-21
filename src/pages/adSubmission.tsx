@@ -162,7 +162,7 @@ const AdSubmissionPage: React.FC = () => {
          <IconButton
          aria-label="Toggle dropdown"
          icon={<FaAngleLeft />}
-         color="gray.600"
+         color= "gray.600"
          fontSize={'2xl'}
         //  alignItems="end"
          onClick={() => setShowDropdown(!showDropdown)}

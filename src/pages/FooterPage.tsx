@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
             Support
           </Text>
           <Stack>
-                   <Link href="#">support@jiji.ng</Link>
+                   <Link href="#">support@Cheapay.ng</Link>
                   <Link href="#">Safety tips</Link>
                   <Link href="#">Contact Us</Link>
                   <Link href="#">FAQ</Link>
@@ -99,7 +99,7 @@ const Footer: React.FC = () => {
           <Stack>
             <Link href="#">Brand</Link>
             <Link href="#">Regions</Link>
-            <Link href="#">Jiji Africa</Link>
+            <Link href="#">Cheapay Africa</Link>
           </Stack>
         </GridItem>
        

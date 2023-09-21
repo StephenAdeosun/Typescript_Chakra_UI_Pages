@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { StarIcon } from '@chakra-ui/icons';
 import { Spinner } from '@chakra-ui/react'
 import { Link } from 'react-router-dom';
+
 const CategoryCard: React.FC<{ name: string  }> = ({ name }) => (
   <Box bg="white" color='grey' p={3}  boxShadow="md">
     <Text fontWeight="sm">{name}</Text>
@@ -16,18 +17,6 @@ const CategoryCard: React.FC<{ name: string  }> = ({ name }) => (
 );
 
 
-// const MiniCardContainer: React.FC<{ data: { image: string, description: string }[] }> = ({ data }) => (
-//   <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={4}>
-//     {data.map((item, index) => (
-//       <Box key={index} bg="white" p={2} boxShadow="md" borderRadius="md">
-//         <Image src={item.image} alt={`Image ${index}`} w="100%" h="auto" />
-//         <Text fontSize="sm" mt={2}>
-//           {item.description}
-//         </Text>
-//       </Box>
-//     ))}
-//   </SimpleGrid>
-// );
 
 const MiniCardContainer: React.FC<{ data: { image: string, description: string }[] }> = ({ data }) => (
   <SimpleGrid columns={{ base: 3, sm: 5, md: 5 }} spacing={0.6} bgColor="rgb(235,242,247)"   >
@@ -46,21 +35,6 @@ const MiniCardContainer: React.FC<{ data: { image: string, description: string }
     ))}
   </SimpleGrid>
 );
-// const MiniCardContainer: React.FC<{ data: { image: string, description: string }[] }> = ({ data }) => (
-//   <SimpleGrid columns={{ base: 3, sm: 5, md: 5 }} spacing={0.6} bgColor="rgb(235,242,247)"   >
-//     {data.map((item, index) => (
-//       <Box key={index} margin='7 0.4' >
-//         <Box bg="white" py={6} border="red"  boxShadow="md" display={{ base: 'block' ,xl: 'none' }} h="100%" >
-//           <Image src={item.image} alt={`Image ${index}`} w="65%" margin='0 auto' h='auto' />
-//           <Text fontSize="sm" mt={0.2} textAlign='center' fontWeight='bold' color='black'>
-//             {item.description}
-
-//           </Text>
-//         </Box>
-//       </Box>
-//     ))}
-//   </SimpleGrid>
-// );
 
 
 const ProductCard: React.FC<{ name: string, image: string,price:string , tags?: string[] , number?:string[]}> = ({ name, image, price , tags, number }) => (
@@ -94,13 +68,14 @@ const ProductCard: React.FC<{ name: string, image: string,price:string , tags?: 
     </Box>
     
 <Divider orientation="horizontal" />
-    
+    <Link to='/product-details'>
     <Text fontSize="sm" p={1} color="black" mt={2}>
       {name}
     </Text>
     <Text fontSize="sm" p={1} color="rgb(252, 128, 3)" mt={2}>
     &#8358;{price}
     </Text>
+    </Link>
   </Box>
 );
 
@@ -115,8 +90,8 @@ const MainSection: React.FC = () => {
     { name: 'Ford Mustang 2014 Red' ,image: 'https://pictures-nigeria.jijistatic.com/129146232_NjAwLTYwMS0xNDUxM2E5YTZj.webp' , price:'7,100,000' , tags: ['2X Diamond'] , number:['15']}	,
     { name: 'BMW 128i 2009 Gold' ,image: 'https://pictures-nigeria.jijistatic.com/129149328_ODEwLTEwODAtYzNlOTMxOWQwYQ.webp' , price:'500,000' , tags: ['VIP TOP +'] , number:['14']}	,
 
-    { name: 'Mercedes-Benz Black' ,image: 'https://pictures-nigeria.jijistatic.com/129135331_MTEyNS0xNTAwLWIzNDUzNTU4ZWU.webp' , price:' 5,680,000' , tags: ['Diamond'] , number:['13']}	,
-    { name: 'BMW 1 Series 2008 Red' ,image: 'https://pictures-nigeria.jijistatic.com/129148259_NzE0LTY1NC04MzNmNjRhOGQ3.webp' , price:' 3,850,000,'  , number:['12']}	,
+    { name: 'Mercedes-Benz Black' ,image: 'https://pictures-nigeria.jijistatic.com/127412940_MTAyNC04NTAtMDRjZWUxNjVlOQ.webp' , price:' 5,680,000' , tags: ['Diamond'] , number:['13']}	,
+    { name: 'BMW 1 Series 2008 Red' ,image: 'https://pictures-nigeria.jijistatic.com/121966380_MTUwMC0xMTI1LTM0ZTZlYjk0MmM.webp' , price:' 3,850,000,'  , number:['12']}	,
     { name: 'Ferrari 458 Spider  2013 ' ,image: 'https://pictures-nigeria.jijistatic.com/129037158_MTI4MC05NjAtODc4MTZlYmFmNg.webp' , price:' 150,000,000' , tags: ['VIP++'] , number:['11']}	,
     { name: ' BMW X1 2006 Silver',image: 'https://pictures-nigeria.jijistatic.com/128301193_MTA4MC04MDktYzEyMTIzMmU1Nw.webp' , price:' 3,000,000' , tags: ['VIP TOP +'] , number:['10']}	,
     { name: 'BMW 330i 2006 Gray' ,image: 'https://pictures-nigeria.jijistatic.com/113099276_MTUwMC0xMTI1LTZhNDEzNzgxZGU.webp' , price:' 4,500,000' , tags: ['2X Diamond'] , number:['9']}	,
@@ -173,7 +148,6 @@ const MainSection: React.FC = () => {
     }, 1000); // Adjust the delay as needed
   };
 
-  // console.log("Filtered Products Length:", filteredProducts.length);
 
   return (
     <Box>
@@ -228,12 +202,7 @@ const MainSection: React.FC = () => {
     {/* <MiniCardContainer data={miniCardData} /> */}
     
     <Box p={{base:'4', md:'16'}} bgColor='rgb(235,242,247)' borderRadius='md'>
-    {/* <Box flex={8}>
-        <Text fontSize="xl" p={1} color="black" mt={-3}>
-          Trending ads
-        </Text>
-        <MiniCardContainer data={miniCardData} />
-      </Box> */}
+   
       <MiniCardContainer data={miniCardData} />
       <Stack direction={{ base: 'column', md: 'row' }} spacing={6}>
         <Box flex={3} cursor='pointer' display={{ base: 'none', xl: 'block' }}>
